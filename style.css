@@ -1,11 +1,11 @@
-/* VCBN — custom layer on top of Tailwind */
+/* DevNet, custom layer on top of Tailwind */
 
 :root {
-  --vcbn-primary: #a3e635;
-  --vcbn-bg: #0a0f0a;
-  --vcbn-surface: #111a11;
-  --vcbn-border: #1a2e1a;
-  --vcbn-glow: rgba(163, 230, 53, 0.35);
+  --devnet-primary: #a3e635;
+  --devnet-bg: #0a0f0a;
+  --devnet-surface: #111a11;
+  --devnet-border: #1a2e1a;
+  --devnet-glow: rgba(163, 230, 53, 0.35);
 }
 
 html {
@@ -13,7 +13,7 @@ html {
   scroll-padding-top: calc(4.5rem + 1.25rem + env(safe-area-inset-top, 0px));
 }
 
-/* Main sections — shared vertical rhythm + smooth transitions into next band */
+/* Main sections, shared vertical rhythm + smooth transitions into next band */
 .site-section {
   scroll-margin-top: calc(4.5rem + 1rem + env(safe-area-inset-top, 0px));
 }
@@ -28,7 +28,7 @@ html {
   }
 }
 
-/* About hero — top padding must live here: arbitrary Tailwind classes like pt-[calc(...)]
+/* About hero, top padding must live here: arbitrary Tailwind classes like pt-[calc(...)]
    are not in the prebuilt tailwind-output.css, so the headline was flush to y=0 and sat under the fixed nav. */
 .site-section--about {
   padding-top: calc(4rem + 2.5rem + env(safe-area-inset-top, 0px));
@@ -105,7 +105,7 @@ html {
   height: min(140px, 18vh);
   pointer-events: none;
   z-index: 1;
-  background: linear-gradient(180deg, var(--vcbn-bg) 0%, transparent 85%);
+  background: linear-gradient(180deg, var(--devnet-bg) 0%, transparent 85%);
   opacity: 0.85;
 }
 
@@ -122,7 +122,7 @@ body {
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
-/* About — primary heading id; scroll margin when linking to #about-heading */
+/* About, primary heading id; scroll margin when linking to #about-heading */
 .site-section--about #about-heading {
   scroll-margin-top: calc(4rem + 1.25rem + env(safe-area-inset-top, 0px));
 }
@@ -133,7 +133,7 @@ body {
   }
 }
 
-/* Section headings — eyebrow + large title (shared with About hero) */
+/* Section headings, eyebrow + large title (shared with About hero) */
 .site-section-heading {
   text-align: center;
 }
@@ -142,7 +142,7 @@ body {
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--vcbn-primary);
+  color: var(--devnet-primary);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   margin-bottom: 0.75rem;
@@ -182,7 +182,7 @@ body {
   }
 }
 
-/* About hero — org name as H1; motto line below */
+/* About hero, org name as H1; motto line below */
 .site-section-heading__title--about {
   max-width: none;
   width: 100%;
@@ -192,20 +192,19 @@ body {
   text-wrap: balance;
 }
 
-/* About hero — full org name; Syne + lime gradient, scoped to this H1 only */
+/* About hero, full org name; Syne + lime gradient, scoped to this H1 only.
+   Size inherits from .site-section-heading__title so this hero matches the
+   rest of the page's section headings rather than towering over them. */
 .site-section-heading__title.site-hero-title {
   font-family: 'Syne', 'Inter', system-ui, sans-serif;
   font-weight: 600;
   font-stretch: normal;
   /* Syne bold can read horizontally “stretched”; tighter tracking + lighter weight balances it */
-  letter-spacing: -0.055em;
-  line-height: 1.22;
-  padding-top: 0.14em;
-  padding-bottom: 0.12em;
+  letter-spacing: -0.045em;
   background: linear-gradient(
     100deg,
     #ecfccb 0%,
-    var(--vcbn-primary) 38%,
+    var(--devnet-primary) 38%,
     #bef264 72%,
     #d9f99d 100%
   );
@@ -242,15 +241,14 @@ body {
   }
 }
 
-/* Wordmark — Orbitron + brand green (header; footer reuses --header for parity) */
+/* Wordmark, Orbitron + brand green (header; footer reuses --header for parity) */
 .site-brand-mark {
   font-family: 'Orbitron', system-ui, sans-serif;
   font-weight: 800;
   font-style: normal;
-  letter-spacing: 0.06em;
-  color: var(--vcbn-primary);
+  letter-spacing: 0.04em;
+  color: var(--devnet-primary);
   line-height: 1;
-  transform: skewX(-6deg);
   text-shadow:
     0 0 20px rgba(163, 230, 53, 0.35),
     0 1px 0 rgba(0, 0, 0, 0.4);
@@ -259,10 +257,31 @@ body {
 }
 
 .site-brand-mark--header {
-  font-size: clamp(1.125rem, 3.2vw, 1.375rem);
+  font-size: clamp(1rem, 2.8vw, 1.25rem);
 }
 
-/* Animated grid background — single pitch sitewide */
+/* Logo mark, DN glyph paired with the DevNet wordmark */
+.site-brand-mark__img {
+  display: block;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 16px rgba(163, 230, 53, 0.22));
+}
+
+.site-brand-mark__img--header {
+  height: 2rem;
+  width: 2rem;
+}
+
+@media (min-width: 768px) {
+  .site-brand-mark__img--header {
+    height: 2.25rem;
+    width: 2.25rem;
+  }
+}
+
+/* Animated grid background, single pitch sitewide */
 .bg-grid {
   background-image:
     linear-gradient(rgba(163, 230, 53, 0.03) 1px, transparent 1px),
@@ -270,27 +289,27 @@ body {
   background-size: 32px 32px;
 }
 
-/* Glass nav — slightly opaque so body copy does not read as a blur through the bar */
+/* Glass nav, slightly opaque so body copy does not read as a blur through the bar */
 .nav-glass {
   background: rgba(10, 15, 10, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--vcbn-border);
+  border-bottom: 1px solid var(--devnet-border);
 }
 
 .nav-glass.scrolled {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
-/* Footer bar — same glass + border language as the header */
+/* Footer bar, same glass + border language as the header */
 .footer-glass {
   background: rgba(10, 15, 10, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-top: 1px solid var(--vcbn-border);
+  border-top: 1px solid var(--devnet-border);
 }
 
-/* Skip link — visible on keyboard focus
+/* Skip link, visible on keyboard focus
    Must clear top offset + full height; -120% alone leaves a lime band (looks like a duplicate CTA). */
 .skip-link {
   position: absolute;
@@ -303,8 +322,8 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--vcbn-bg);
-  background: var(--vcbn-primary);
+  color: var(--devnet-bg);
+  background: var(--devnet-primary);
   border-radius: 6px;
   text-decoration: none;
   transform: translateY(calc(-100% - 0.75rem - 2px));
@@ -378,7 +397,7 @@ body {
   right: 0.35rem;
   bottom: 0.15rem;
   height: 1px;
-  background: var(--vcbn-primary);
+  background: var(--devnet-primary);
   opacity: 0;
   transform: scaleX(0.65);
   transition:
@@ -415,12 +434,12 @@ body {
 }
 
 .site-header__link:focus-visible {
-  outline: 2px solid var(--vcbn-primary);
+  outline: 2px solid var(--devnet-primary);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
-/* ─── Apply — terminal-command links (header + mobile menu) ─── */
+/* ─── Apply, terminal-command links (header + mobile menu) ─── */
 .site-header__apply-commands {
   flex-shrink: 0;
 }
@@ -451,8 +470,8 @@ button.apply-dropdown__trigger {
   text-decoration: none;
   white-space: nowrap;
   color: #94a3b8;
-  background: var(--vcbn-surface);
-  border: 1px solid var(--vcbn-border);
+  background: var(--devnet-surface);
+  border: 1px solid var(--devnet-border);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.04),
     0 1px 2px rgba(0, 0, 0, 0.2);
@@ -505,7 +524,7 @@ button.apply-dropdown__trigger:hover,
 
 a.apply-cmd:focus-visible,
 button.apply-dropdown__trigger:focus-visible {
-  outline: 2px solid var(--vcbn-primary);
+  outline: 2px solid var(--devnet-primary);
   outline-offset: 2px;
 }
 
@@ -514,7 +533,7 @@ button.apply-dropdown__trigger:active {
   transform: translateY(0);
 }
 
-/* Apply — hover dropdown (desktop header) */
+/* Apply, hover dropdown (desktop header) */
 .apply-dropdown {
   position: relative;
 }
@@ -552,7 +571,7 @@ button.apply-dropdown__trigger:active {
   list-style: none;
   border-radius: 0.5rem;
   background: rgba(17, 26, 17, 0.98);
-  border: 1px solid var(--vcbn-border);
+  border: 1px solid var(--devnet-border);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.05),
     0 0 0 1px rgba(163, 230, 53, 0.1),
@@ -642,7 +661,7 @@ a.apply-dropdown__item:hover .apply-dropdown__item-icon--fill {
 }
 
 a.apply-dropdown__item:focus-visible {
-  outline: 2px solid var(--vcbn-primary);
+  outline: 2px solid var(--devnet-primary);
   outline-offset: -2px;
 }
 
@@ -662,7 +681,7 @@ a.apply-dropdown__item:focus-visible {
   }
 }
 
-/* Mobile menu — full width, comfortable tap targets */
+/* Mobile menu, full width, comfortable tap targets */
 a.apply-cmd--mobile {
   display: flex;
   width: 100%;
@@ -705,28 +724,28 @@ a.apply-cmd--mobile {
 }
 
 .site-header__mobile-link:hover {
-  color: var(--vcbn-primary);
+  color: var(--devnet-primary);
   background: rgba(22, 101, 52, 0.12);
 }
 
 .site-header__mobile-link[aria-current='location'] {
-  color: var(--vcbn-primary);
+  color: var(--devnet-primary);
   background: rgba(22, 101, 52, 0.18);
 }
 
 .site-header__mobile-link:focus-visible {
-  outline: 2px solid var(--vcbn-primary);
+  outline: 2px solid var(--devnet-primary);
   outline-offset: 0;
 }
 
 
-/* Connect console — footer-adjacent social dock */
+/* Connect console, footer-adjacent social dock */
 .connect-console__pulse-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--vcbn-primary);
-  box-shadow: 0 0 8px var(--vcbn-glow);
+  background: var(--devnet-primary);
+  box-shadow: 0 0 8px var(--devnet-glow);
   animation: connectPulse 2s ease-in-out infinite;
 }
 
@@ -761,7 +780,7 @@ a.apply-cmd--mobile {
 }
 
 .connect-console__link-accent--x {
-  background: linear-gradient(180deg, var(--vcbn-primary), rgba(163, 230, 53, 0.2));
+  background: linear-gradient(180deg, var(--devnet-primary), rgba(163, 230, 53, 0.2));
 }
 
 .connect-console__link-accent--in {
@@ -774,7 +793,7 @@ a.apply-cmd--mobile {
 }
 
 .connect-console__link:focus-visible {
-  outline: 2px solid var(--vcbn-primary);
+  outline: 2px solid var(--devnet-primary);
   outline-offset: -2px;
 }
 
@@ -789,12 +808,12 @@ a.apply-cmd--mobile {
   }
 }
 
-/* Why join — 2×2 console grid (matches Socials terminal; grid lines via gap + bg) */
+/* Why join, 2×2 console grid (matches Socials terminal; grid lines via gap + bg) */
 .why-join-console__grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1px;
-  background: var(--vcbn-border);
+  background: var(--devnet-border);
 }
 
 @media (min-width: 768px) {
@@ -802,177 +821,51 @@ a.apply-cmd--mobile {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  [data-why-join-console] .connect-console__link {
-    min-height: 12rem;
-  }
-
-  [data-about-console] .about-console__cell {
+  [data-why-join-console] .connect-console__link,
+  [data-who-console] .connect-console__link,
+  [data-about-console] .connect-console__link {
     min-height: 12rem;
   }
 }
 
-/* About console — 1px gutter between columns (same as Why Join / Socials grids) */
+/* About console, 1px gutter between columns (same as Why Join / Socials grids) */
 [data-about-console] .why-join-console__grid {
   gap: 1px;
-  background: var(--vcbn-border);
+  background: var(--devnet-border);
 }
 
-.about-console__label {
+/* About console, intro paragraph above the pillar grid */
+.about-console__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.about-console__intro-label {
   margin: 0;
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.6875rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(148, 163, 184, 0.85);
+  color: rgba(163, 230, 53, 0.7);
 }
 
-.about-console__cell--primary .about-console__label {
-  color: rgba(163, 230, 53, 0.55);
-}
-
-.about-console__cell--secondary .about-console__label {
-  color: rgba(56, 189, 248, 0.55);
-}
-
-.about-console__cell--primary:hover .about-console__label {
-  color: rgba(163, 230, 53, 0.82);
-}
-
-.about-console__cell--secondary:hover .about-console__label {
-  color: rgba(56, 189, 248, 0.82);
-}
-
-/* About console — padding clears the 3px left accent strip */
-[data-about-console] .about-console__cell {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  padding-right: 2rem;
-  padding-left: calc(2rem + 0.625rem);
+.about-console__intro-body {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgb(203, 213, 225);
 }
 
 @media (min-width: 640px) {
-  [data-about-console] .about-console__cell {
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
-    padding-right: 2.5rem;
-    padding-left: calc(2.5rem + 0.75rem);
+  .about-console__intro-body {
+    font-size: 1.0625rem;
   }
 }
 
-/* About console — hover / focus interactions */
-.about-console__cell {
-  --tilt-x: 0deg;
-  --tilt-y: 0deg;
-  position: relative;
-  isolation: isolate;
-  cursor: default;
-  border: 1px solid transparent;
-  transform: perspective(960px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateZ(0);
-  transition:
-    background-color 0.22s ease,
-    border-color 0.22s ease,
-    box-shadow 0.22s ease,
-    transform 0.12s ease-out;
-}
-
-.about-console__cell::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  opacity: 0.5;
-  pointer-events: none;
-  transition: opacity 0.22s ease;
-  z-index: 0;
-}
-
-.about-console__cell > * {
-  position: relative;
-  z-index: 1;
-}
-
-.about-console__cell--primary::before {
-  background: linear-gradient(180deg, var(--vcbn-primary), rgba(163, 230, 53, 0.12));
-}
-
-.about-console__cell--secondary::before {
-  background: linear-gradient(180deg, #38bdf8, rgba(56, 189, 248, 0.12));
-}
-
-.about-console__cell:hover {
-  background-color: rgba(13, 20, 13, 0.97);
-  transform: perspective(960px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(-3px);
-}
-
-.about-console__cell--primary:hover {
-  border-color: rgba(163, 230, 53, 0.35);
-  box-shadow:
-    inset 0 0 0 1px rgba(163, 230, 53, 0.12),
-    0 16px 48px -28px rgba(163, 230, 53, 0.35);
-}
-
-.about-console__cell--primary:hover::before {
-  opacity: 1;
-}
-
-.about-console__cell--primary:hover .about-console__title {
-  color: #ecfccb;
-  text-shadow: 0 0 24px rgba(163, 230, 53, 0.18);
-}
-
-.about-console__cell--primary:hover .about-console__body {
-  color: #cbd5e1;
-}
-
-.about-console__cell--secondary:hover {
-  border-color: rgba(56, 189, 248, 0.32);
-  box-shadow:
-    inset 0 0 0 1px rgba(56, 189, 248, 0.1),
-    0 16px 48px -28px rgba(56, 189, 248, 0.28);
-}
-
-.about-console__cell--secondary:hover::before {
-  opacity: 1;
-}
-
-.about-console__cell--secondary:hover .about-console__title {
-  color: #e0f2fe;
-  text-shadow: 0 0 22px rgba(56, 189, 248, 0.2);
-}
-
-.about-console__cell--secondary:hover .about-console__body {
-  color: #cbd5e1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .about-console__cell {
-    transform: none;
-  }
-
-  .about-console__cell:hover {
-    transform: none;
-  }
-
-  .about-console__cell--primary:hover .about-console__title,
-  .about-console__cell--secondary:hover .about-console__title {
-    text-shadow: none;
-  }
-}
-
-[data-about-console].connect-console {
-  transition: box-shadow 0.25s ease;
-}
-
-[data-about-console].connect-console:has(.about-console__cell:hover) {
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 0 0 1px rgba(163, 230, 53, 0.12),
-    0 28px 64px -36px rgba(163, 230, 53, 0.22);
-}
-
-/* Why Join row 3–4 reuse primary + sky accents (same two families as rows 1–2) */
+/* About console now reuses connect-console__link--static + why-join-console__icon,
+   so the bespoke .about-console__cell* rules have been retired. Only the intro
+   block styles above remain. */
 
 /* Presence map (Leaflet) */
 .presence-map-wrap {
@@ -985,15 +878,15 @@ a.apply-cmd--mobile {
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
-  background: var(--vcbn-bg);
+  background: var(--devnet-bg);
 }
 
-/* Hub connection arcs — below markers; no pointer capture */
-.presence-map .leaflet-vcbn-arcs-pane {
+/* Hub connection arcs, below markers; no pointer capture */
+.presence-map .leaflet-devnet-arcs-pane {
   pointer-events: none !important;
 }
 
-.presence-map .leaflet-vcbn-arcs-pane .vcbn-hub-arc {
+.presence-map .leaflet-devnet-arcs-pane .devnet-hub-arc {
   stroke-linecap: round;
   stroke-linejoin: round;
   filter: drop-shadow(0 0 1.5px rgba(201, 168, 76, 0.35));
@@ -1004,19 +897,19 @@ a.apply-cmd--mobile {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .presence-map .leaflet-vcbn-arcs-pane .vcbn-hub-arc {
+  .presence-map .leaflet-devnet-arcs-pane .devnet-hub-arc {
     transition: none;
   }
 }
 
 .presence-map .leaflet-control-zoom a {
-  background: var(--vcbn-surface) !important;
-  color: var(--vcbn-primary) !important;
-  border-color: var(--vcbn-border) !important;
+  background: var(--devnet-surface) !important;
+  color: var(--devnet-primary) !important;
+  border-color: var(--devnet-border) !important;
 }
 
 .presence-map .leaflet-control-zoom a:hover {
-  background: var(--vcbn-bg) !important;
+  background: var(--devnet-bg) !important;
   color: #bef264 !important;
 }
 
@@ -1034,9 +927,9 @@ a.apply-cmd--mobile {
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--vcbn-primary) !important;
-  background: var(--vcbn-surface) !important;
-  border: 1px solid var(--vcbn-border) !important;
+  color: var(--devnet-primary) !important;
+  background: var(--devnet-surface) !important;
+  border: 1px solid var(--devnet-border) !important;
   border-radius: 4px;
   cursor: pointer;
   line-height: 1.2;
@@ -1047,7 +940,7 @@ a.apply-cmd--mobile {
 }
 
 .presence-map .presence-map-reset-btn:hover {
-  background: var(--vcbn-bg) !important;
+  background: var(--devnet-bg) !important;
   color: #bef264 !important;
 }
 
@@ -1070,8 +963,8 @@ a.apply-cmd--mobile {
   color: #94a3b8 !important;
 }
 
-/* Hub markers — cluster (Ontario stack) + custom count pill */
-.presence-map .leaflet-marker-icon.vcbn-marker-cluster {
+/* Hub markers, cluster (Ontario stack) + custom count pill */
+.presence-map .leaflet-marker-icon.devnet-marker-cluster {
   box-sizing: border-box;
   display: flex !important;
   align-items: center;
@@ -1088,7 +981,7 @@ a.apply-cmd--mobile {
     0 6px 20px rgba(0, 0, 0, 0.5);
 }
 
-.presence-map .vcbn-cluster-count {
+.presence-map .devnet-cluster-count {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.6875rem;
   font-weight: 700;
@@ -1106,9 +999,9 @@ a.apply-cmd--mobile {
   box-sizing: border-box;
 }
 
-.leaflet-tooltip.vcbn-map-tooltip {
-  background: var(--vcbn-surface) !important;
-  border: 1px solid var(--vcbn-border) !important;
+.leaflet-tooltip.devnet-map-tooltip {
+  background: var(--devnet-surface) !important;
+  border: 1px solid var(--devnet-border) !important;
   color: #e2e8f0 !important;
   border-radius: 8px !important;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55) !important;
@@ -1116,12 +1009,12 @@ a.apply-cmd--mobile {
   font-family: Inter, system-ui, sans-serif !important;
 }
 
-.leaflet-tooltip.vcbn-map-tooltip.vcbn-map-tooltip--minimal {
+.leaflet-tooltip.devnet-map-tooltip.devnet-map-tooltip--minimal {
   border-radius: 6px !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
 }
 
-.leaflet-tooltip.vcbn-map-tooltip::before {
+.leaflet-tooltip.devnet-map-tooltip::before {
   display: none !important;
 }
 
@@ -1148,7 +1041,7 @@ a.apply-cmd--mobile {
   margin-bottom: 0;
 }
 
-/* Talent Rep CTA — simple line + button below US hubs */
+/* Talent Rep CTA, simple line + button below US hubs */
 .presence-ops__rep-cta {
   display: flex;
   flex-direction: column;
@@ -1184,8 +1077,8 @@ a.apply-cmd--mobile {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--vcbn-bg);
-  background: var(--vcbn-primary);
+  color: var(--devnet-bg);
+  background: var(--devnet-primary);
   border: 1px solid rgba(163, 230, 53, 0.6);
   box-shadow: 0 0 16px rgba(163, 230, 53, 0.2);
   transition:
@@ -1220,7 +1113,7 @@ a.apply-cmd--mobile {
   }
 }
 
-/* Ops list — Canada vs US regions + hub chips */
+/* Ops list, Canada vs US regions + hub chips */
 .presence-ops__regions {
   display: flex;
   flex-direction: column;
@@ -1350,7 +1243,7 @@ a.apply-cmd--mobile {
   border-radius: 9999px;
   flex-shrink: 0;
   margin-top: 0.35rem;
-  background: var(--vcbn-primary);
+  background: var(--devnet-primary);
   box-shadow:
     0 0 0 1px rgba(0, 0, 0, 0.35),
     0 0 12px rgba(163, 230, 53, 0.22);
@@ -1419,7 +1312,7 @@ a.apply-cmd--mobile {
 }
 
 .presence-city-pill:focus-visible {
-  outline: 2px solid var(--vcbn-primary);
+  outline: 2px solid var(--devnet-primary);
   outline-offset: 2px;
 }
 
@@ -1450,7 +1343,7 @@ a.apply-cmd--mobile {
     0 0 16px rgba(74, 222, 128, 0.55);
 }
 
-/* Site footer — one bar, aligned with header chrome */
+/* Site footer, one bar, aligned with header chrome */
 .site-footer {
   position: relative;
   box-sizing: border-box;
@@ -1484,7 +1377,7 @@ a.apply-cmd--mobile {
   width: 2rem;
   height: 2rem;
   border-radius: 0.375rem;
-  border: 1px solid var(--vcbn-border);
+  border: 1px solid var(--devnet-border);
   background: rgba(10, 15, 10, 0.5);
   color: #94a3b8;
   text-decoration: none;
@@ -1537,7 +1430,7 @@ a.apply-cmd--mobile {
   }
 }
 
-/* FAQ — help console (hover / focus reveals one at a time) */
+/* FAQ, help console (hover / focus reveals one at a time) */
 .faq-console {
   position: relative;
 }
@@ -1616,7 +1509,7 @@ a.apply-cmd--mobile {
 }
 
 .faq-item__summary:focus-visible {
-  outline: 2px solid var(--vcbn-primary);
+  outline: 2px solid var(--devnet-primary);
   outline-offset: -2px;
 }
 
@@ -1636,70 +1529,39 @@ a.apply-cmd--mobile {
   }
 }
 
-/* Answer panels — readable contrast + console-adjacent surface */
+/* FAQ answers, plain prose (no faux bullets / row dividers) */
 .faq-item__a,
 .faq-item__answer {
   margin: 0;
-  font-size: 0.875rem;
-  line-height: 1.65;
-  color: #e8edf4;
-  background: linear-gradient(
-    165deg,
-    rgba(14, 28, 18, 0.92) 0%,
-    rgba(8, 16, 11, 0.88) 100%
-  );
-  border: 1px solid rgba(71, 85, 105, 0.42);
-  border-left: 3px solid rgba(163, 230, 53, 0.42);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: #cbd5e1;
+  background: rgba(6, 10, 7, 0.45);
+  border: 1px solid rgba(26, 46, 26, 0.55);
   border-radius: 0.5rem;
-  padding: 0.875rem 1rem 0.875rem 1.125rem;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.055),
-    0 10px 28px -14px rgba(0, 0, 0, 0.55);
+  padding: 0.875rem 1rem;
   transition:
     border-color 0.18s ease,
-    background 0.18s ease,
-    box-shadow 0.18s ease;
+    background 0.18s ease;
 }
 
 @media (min-width: 640px) {
   .faq-item__a,
   .faq-item__answer {
-    font-size: 0.9375rem;
-    padding: 1rem 1.125rem 1rem 1.25rem;
+    font-size: 1rem;
+    padding: 1rem 1.125rem;
+    line-height: 1.72;
   }
 }
 
-/* Single-line answers — same marker as multi-paragraph rows */
 .faq-item__a {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.65rem;
-}
-
-.faq-item__a::before {
-  content: '';
-  flex: 0 0 auto;
-  width: 5px;
-  height: 5px;
-  margin-top: 0.48em;
-  border-radius: 1px;
-  background: rgba(163, 230, 53, 0.55);
-  box-shadow: 0 0 10px rgba(163, 230, 53, 0.22);
+  display: block;
 }
 
 .faq-item--open .faq-item__a,
 .faq-item--open .faq-item__answer {
-  background: linear-gradient(
-    165deg,
-    rgba(18, 38, 24, 0.96) 0%,
-    rgba(10, 22, 14, 0.94) 100%
-  );
-  border-color: rgba(100, 116, 139, 0.48);
-  border-left-color: rgba(163, 230, 53, 0.72);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 14px 36px -16px rgba(163, 230, 53, 0.14),
-    0 8px 24px -12px rgba(0, 0, 0, 0.5);
+  background: rgba(10, 15, 11, 0.72);
+  border-color: rgba(163, 230, 53, 0.22);
 }
 
 .faq-item__answer p {
@@ -1707,54 +1569,7 @@ a.apply-cmd--mobile {
 }
 
 .faq-item__answer p + p {
-  margin-top: 0.75rem;
-}
-
-/* Multi-paragraph answers — cohesive “stack” instead of spaced plain lines */
-.faq-item__answer:has(p + p) {
-  padding-top: 0.65rem;
-  padding-bottom: 0.65rem;
-}
-
-@media (min-width: 640px) {
-  .faq-item__answer:has(p + p) {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-  }
-}
-
-.faq-item__answer:has(p + p) p {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.65rem;
-  margin: 0;
-  padding: 0.55rem 0;
-  border-top: 1px solid rgba(148, 163, 184, 0.12);
-  line-height: 1.62;
-}
-
-.faq-item__answer:has(p + p) p:first-of-type {
-  border-top: none;
-  padding-top: 0;
-}
-
-.faq-item__answer:has(p + p) p:last-of-type {
-  padding-bottom: 0;
-}
-
-.faq-item__answer:has(p + p) p::before {
-  content: '';
-  flex: 0 0 auto;
-  width: 5px;
-  height: 5px;
-  margin-top: 0.48em;
-  border-radius: 1px;
-  background: rgba(163, 230, 53, 0.55);
-  box-shadow: 0 0 10px rgba(163, 230, 53, 0.22);
-}
-
-.faq-item__answer:has(p + p) p + p {
-  margin-top: 0;
+  margin-top: 0.85rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1765,7 +1580,7 @@ a.apply-cmd--mobile {
   }
 }
 
-/* Pipeline section — interactive */
+/* Pipeline section, interactive */
 .pipeline-section {
   background: linear-gradient(180deg, rgba(17, 26, 17, 0.55) 0%, rgba(10, 15, 10, 0.85) 50%, rgba(17, 26, 17, 0.45) 100%);
 }
@@ -1804,7 +1619,7 @@ a.apply-cmd--mobile {
 }
 
 .pipeline-interactive__dot:focus-visible {
-  outline: 2px solid var(--vcbn-primary);
+  outline: 2px solid var(--devnet-primary);
   outline-offset: 3px;
 }
 
@@ -1817,14 +1632,14 @@ a.apply-cmd--mobile {
   transform: scaleY(1.25);
 }
 
-/* How it works — step cards */
+/* How it works, step cards */
 .ship-steps__list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-/* Pipeline runbook — stacked terminal rows */
+/* Pipeline runbook, stacked terminal rows */
 .ship-steps__list--runbook {
   gap: 0;
 }
@@ -1858,7 +1673,7 @@ a.apply-cmd--mobile {
   display: none !important;
 }
 
-/* Runbook — no top/border shimmer masks (they clipped unevenly at full width) */
+/* Runbook, no top/border shimmer masks (they clipped unevenly at full width) */
 .pipeline-runbook .ship-steps__card.pipeline-runbook__row::before,
 .pipeline-runbook .ship-steps__card.pipeline-runbook__row::after {
   display: none !important;
@@ -1894,13 +1709,13 @@ a.apply-cmd--mobile {
 }
 
 .pipeline-runbook__tab[aria-pressed='true'] {
-  color: var(--vcbn-bg);
-  background: linear-gradient(180deg, #bef264 0%, var(--vcbn-primary) 100%);
+  color: var(--devnet-bg);
+  background: linear-gradient(180deg, #bef264 0%, var(--devnet-primary) 100%);
   box-shadow: 0 0 18px rgba(163, 230, 53, 0.35);
 }
 
 .pipeline-runbook__tab:focus-visible {
-  outline: 2px solid var(--vcbn-primary);
+  outline: 2px solid var(--devnet-primary);
   outline-offset: 2px;
 }
 
@@ -1991,7 +1806,7 @@ a.apply-cmd--mobile {
   height: 100%;
   padding: 1.25rem 1.35rem 1.15rem;
   border-radius: 16px;
-  border: 1px solid var(--vcbn-border);
+  border: 1px solid var(--devnet-border);
   background: rgba(10, 15, 10, 0.92);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
   transition:
@@ -2083,7 +1898,7 @@ a.apply-cmd--mobile {
   filter: saturate(0.75);
 }
 
-/* Runbook shell — full-width row fills (no partial “patches”) */
+/* Runbook shell, full-width row fills (no partial “patches”) */
 .pipeline-runbook.pipeline-interactive[data-active='1'] li[data-step='1'] .ship-steps__card,
 .pipeline-runbook.pipeline-interactive[data-active='2'] li[data-step='2'] .ship-steps__card,
 .pipeline-runbook.pipeline-interactive[data-active='3'] li[data-step='3'] .ship-steps__card {
@@ -2146,7 +1961,7 @@ a.apply-cmd--mobile {
 }
 
 .ship-steps__card:focus-visible {
-  outline: 2px solid var(--vcbn-primary);
+  outline: 2px solid var(--devnet-primary);
   outline-offset: 3px;
   opacity: 1 !important;
   transform: translateY(-2px) scale(1.01) !important;
@@ -2252,7 +2067,7 @@ a.apply-cmd--mobile {
   }
 }
 
-/* Reveal on scroll — shorter travel + ease-out-expo feel */
+/* Reveal on scroll, shorter travel + ease-out-expo feel */
 .reveal {
   opacity: 0;
   transform: translateY(12px);
@@ -2296,6 +2111,6 @@ a.apply-cmd--mobile {
 /* Focus visible for a11y */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--vcbn-primary);
+  outline: 2px solid var(--devnet-primary);
   outline-offset: 2px;
 }
